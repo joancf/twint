@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 PUT twintUser
+=======
+PUT twintuser
+>>>>>>> master
 {
   "mappings": {
     "items": {
@@ -17,10 +21,19 @@ PUT twintUser
         "followers": {"type": "integer"},
         "likes": {"type": "integer"},
         "media": {"type": "integer"},
+<<<<<<< HEAD
         "private": {"type": "boolean"},
         "verified": {"type": "boolean"},
         "avatar": {"type": "text"},
         "session": {"type": "keyword"}
+=======
+        "private": {"type": "integer"},
+        "verified": {"type": "integer"},
+        "avatar": {"type": "text"},
+        "background_image": {"type": "text"},
+        "session": {"type": "keyword"},
+        "geo_user": {"type": "geo_point"}
+>>>>>>> master
       }
     }
   }

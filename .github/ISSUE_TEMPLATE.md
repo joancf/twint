@@ -1,13 +1,22 @@
 # Issue Template
 Please use this template!
 
+<<<<<<< HEAD
 ### Initial Check 
+=======
+### Initial Check
+>>>>>>> master
 > If the issue is a request please specify that it is a request in the title (Example: [REQUEST] more features). If this is a question regarding 'twint' please specify that it's a question in the title (Example: [QUESTION] What is x?). Please **only** submit issues related to 'twint'. Thanks.
 
 >Make sure you've checked the following:
 
+<<<<<<< HEAD
 - [] Python version is 3.5 or higher.
 - [] Using the latest version of Twint.
+=======
+- [] Python version is 3.6;
+- [] Updated Twint with `pip3 install --user --upgrade -e git+https://github.com/twintproject/twint.git@origin/master#egg=twint`;
+>>>>>>> master
 - [] I have searched the issues and there are no duplicates of this issue/question/request.
 
 ### Command Ran

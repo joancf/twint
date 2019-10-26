@@ -3,6 +3,11 @@ import sys
 import time
 import hashlib
 
+<<<<<<< HEAD
+=======
+from datetime import datetime
+
+>>>>>>> master
 def Conn(database):
     if database:
         print("[+] Inserting into Database: " + str(database))
@@ -60,7 +65,10 @@ def init(db):
                     time text not null,
                     timezone text not null,
                     place text default '',
+<<<<<<< HEAD
                     location text not null,
+=======
+>>>>>>> master
                     replies_count integer,
                     likes_count integer,
                     retweets_count integer,
@@ -68,6 +76,7 @@ def init(db):
                     user_id_str text not null,
                     screen_name text not null,
                     name text default '',
+<<<<<<< HEAD
                     profile_image_url text,
                     link text,
                     mentions text,
@@ -75,6 +84,19 @@ def init(db):
                     urls text,
                     photos text,
                     quote_url text,
+=======
+                    link text,
+                    mentions text,
+                    hashtags text,
+                    cashtags text,
+                    urls text,
+                    photos text,
+                    quote_url text,
+                    video integer,
+                    geo text,
+                    near text,
+                    source text,
+>>>>>>> master
                     time_update integer not null,
                     PRIMARY KEY (id)
                 );
@@ -85,13 +107,35 @@ def init(db):
             CREATE TABLE IF NOT EXISTS
                 retweets(
                     user_id integer not null,
+<<<<<<< HEAD
                     tweet_id integer not null,
+=======
+                    username text not null,
+                    tweet_id integer not null,
+                    retweet_id integer not null,
+                    retweet_date integer not null,
+>>>>>>> master
                     CONSTRAINT retweets_pk PRIMARY KEY(user_id, tweet_id),
                     CONSTRAINT user_id_fk FOREIGN KEY(user_id) REFERENCES users(id),
                     CONSTRAINT tweet_id_fk FOREIGN KEY(tweet_id) REFERENCES tweets(id)
                 );
         """
         cursor.execute(table_retweets)
+<<<<<<< HEAD
+=======
+    
+        table_reply_to = """
+            CREATE TABLE IF NOT EXISTS
+                replies(
+                    tweet_id integer not null,
+                    user_id integer not null,
+                    username text not null,
+                    CONSTRAINT replies_pk PRIMARY KEY (user_id, tweet_id),
+                    CONSTRAINT tweet_id_fk FOREIGN KEY (tweet_id) REFERENCES tweets(id)
+                );
+        """
+        cursor.execute(table_reply_to)
+>>>>>>> master
 
         table_favorites =  """
             CREATE TABLE IF NOT EXISTS
@@ -227,7 +271,10 @@ def tweets(conn, Tweet, config):
                     Tweet.timestamp,
                     Tweet.timezone,
                     Tweet.place,
+<<<<<<< HEAD
                     Tweet.location,
+=======
+>>>>>>> master
                     Tweet.replies_count,
                     Tweet.likes_count,
                     Tweet.retweets_count,
@@ -235,6 +282,7 @@ def tweets(conn, Tweet, config):
                     Tweet.user_id_str,
                     Tweet.username,
                     Tweet.name,
+<<<<<<< HEAD
                     Tweet.profile_image_url,
                     Tweet.link,
                     ",".join(Tweet.mentions),
@@ -244,11 +292,27 @@ def tweets(conn, Tweet, config):
                     Tweet.quote_url,
                     time_ms)
         cursor.execute('INSERT INTO tweets VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', entry)
+=======
+                    Tweet.link,
+                    ",".join(Tweet.mentions),
+                    ",".join(Tweet.hashtags),
+                    ",".join(Tweet.cashtags),
+                    ",".join(Tweet.urls),
+                    ",".join(Tweet.photos),
+                    Tweet.quote_url,
+                    Tweet.video,
+                    Tweet.geo,
+                    Tweet.near,
+                    Tweet.source,
+                    time_ms)
+        cursor.execute('INSERT INTO tweets VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', entry)
+>>>>>>> master
 
         if config.Favorites:
             query = 'INSERT INTO favorites VALUES(?,?)'
             cursor.execute(query, (config.User_id, Tweet.id))
 
+<<<<<<< HEAD
         if Tweet.retweet == 1:
             query = 'INSERT INTO retweets VALUES(?,?)'
             cursor.execute(query, (config.User_id, Tweet.id))
@@ -256,3 +320,18 @@ def tweets(conn, Tweet, config):
         conn.commit()
     except sqlite3.IntegrityError:
         pass
+=======
+        if Tweet.retweet:
+            query = 'INSERT INTO retweets VALUES(?,?,?,?,?)'
+            _d = datetime.timestamp(datetime.strptime(Tweet.retweet_date, "%Y-%m-%d %H:%M:%S"))
+            cursor.execute(query, (int(Tweet.user_rt_id), Tweet.user_rt, Tweet.id, int(Tweet.retweet_id), _d))
+        
+        if Tweet.reply_to:
+            for reply in Tweet.reply_to:
+                query = 'INSERT INTO replies VALUES(?,?,?)'
+                cursor.execute(query, (Tweet.id, int(reply['user_id']), reply['username']))
+
+        conn.commit()
+    except sqlite3.IntegrityError:
+        pass
+>>>>>>> master

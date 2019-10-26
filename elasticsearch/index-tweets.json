@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 PUT twint
+=======
+PUT twinttweets
+>>>>>>> master
 {
   "mappings": {
     "items": {
       "properties": {
+<<<<<<< HEAD
         "id": {"type": "long"},
         "date": {"type": "date", "format": "yyyy-MM-dd HH:mm:ss"},
         "timezone": {"type": "text"},
@@ -20,6 +25,39 @@ PUT twint
         "retweet": {"type": "text"},
         "user_rt": {"type": "text"},
         "essid": {"type": "keyword"}
+=======
+          "id": {"type": "long"},
+          "conversation_id": {"type": "long"},
+          "created_at": {"type": "long"},
+          "date": {"type": "date", "format": "yyyy-MM-dd HH:mm:ss"},
+          "timezone": {"type": "keyword"},
+          "place": {"type": "keyword"},
+          "location": {"type": "keyword"},
+          "tweet": {"type": "text"},
+          "hashtags": {"type": "keyword"},
+          "cashtags": {"type": "keyword"},
+          "user_id": {"type": "long"},
+          "user_id_str": {"type": "keyword"},
+          "username": {"type": "keyword"},
+          "name": {"type": "text"},
+          "profile_image_url": {"type": "text"},
+          "day": {"type": "integer"},
+          "hour": {"type": "integer"},
+          "link": {"type": "text"},
+          "retweet": {"type": "text"},
+          "essid": {"type": "keyword"},
+          "nlikes": {"type": "integer"},
+          "nreplies": {"type": "integer"},
+          "nretweets": {"type": "integer"},
+          "quote_url": {"type": "text"},
+          "video": {"type": "integer"},
+          "search": {"type": "text"},
+          "near":  {"type": "text"},
+          "geo_near": {"type": "geo_point"},
+          "geo_tweet": {"type": "geo_point"},
+          "photos": {"type": "text"},
+          "mentions": {"type": "text"}
+>>>>>>> master
       }
     }
   }
