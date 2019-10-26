@@ -17,28 +17,11 @@ def tweetData(t):
             "replies_count": int(t.replies_count),
             "retweets_count": int(t.retweets_count),
             "likes_count": int(t.likes_count),
-<<<<<<< HEAD
             "location": t.location,
             "hashtags": t.hashtags,
             "link": t.link,
             "retweet": t.retweet,
             "quote_url": t.quote_url
-=======
-            "hashtags": t.hashtags,
-            "cashtags": t.cashtags,
-            "link": t.link,
-            "retweet": t.retweet,
-            "quote_url": t.quote_url,
-            "video": t.video,
-            "near": t.near,
-            "geo": t.geo,
-            "source": t.source,
-            "user_rt_id": t.user_rt_id,
-            "user_rt": t.user_rt,
-            "retweet_id": t.retweet_id,
-            "reply_to": t.reply_to,
-            "retweet_date": t.retweet_date
->>>>>>> master
             }
     return data
 
@@ -61,28 +44,11 @@ def tweetFieldnames():
             "replies_count",
             "retweets_count",
             "likes_count",
-<<<<<<< HEAD
             "location",
             "hashtags",
             "link",
             "retweet",
             "quote_url"
-=======
-            "hashtags",
-            "cashtags",
-            "link",
-            "retweet",
-            "quote_url",
-            "video",
-            "near",
-            "geo",
-            "source",
-            "user_rt_id",
-            "user_rt",
-            "retweet_id",
-            "reply_to",
-            "retweet_date"
->>>>>>> master
             ]
     return fieldnames
 
@@ -103,11 +69,7 @@ def userData(u):
             "media": int(u.media_count),
             "private": u.is_private,
             "verified": u.is_verified,
-<<<<<<< HEAD
             "avatar": u.avatar,
-=======
-            "profile_image_url": u.avatar,
->>>>>>> master
             "background_image": u.background_image
             }
     return data
@@ -129,11 +91,7 @@ def userFieldnames():
             "media",
             "private",
             "verified",
-<<<<<<< HEAD
             "avatar",
-=======
-            "profile_image_url",
->>>>>>> master
             "background_image"
             ]
     return fieldnames

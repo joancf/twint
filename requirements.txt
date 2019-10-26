@@ -4,8 +4,7 @@ beautifulsoup4
 cchardet
 elasticsearch
 pysocks
-pandas>=0.23.0
+pandas
 aiohttp_socks
 schedule
 geopy
-fake-useragent

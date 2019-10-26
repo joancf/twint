@@ -2,7 +2,6 @@
 
 ![dashboard](https://i.imgur.com/BEbtdo5.png)
 
-<<<<<<< HEAD
 ### Zero Point
 First of all you have to download two main tools:
 - [Elasticsearch](https://www.elastic.co/downloads/elasticsearch);
@@ -52,6 +51,3 @@ Now that everything is up and running:
 ### Notes
 
 Different indexes can have different visualizations so there is not a general rule, with the basics provided in the Wiki you should be able to create visualizations. In any case, for every question, don't hesitate to ask.
-=======
-Please read the Wiki [here](https://github.com/twintproject/twint/wiki/Elasticsearch)
->>>>>>> master

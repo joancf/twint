@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-=======
-import logging as logme
-
->>>>>>> master
 class user:
     type = "user"
 
@@ -10,18 +5,9 @@ class user:
         pass
 
 def inf(ur, _type):
-<<<<<<< HEAD
     try:
         group = ur.find("div", "user-actions btn-group not-following ")
         if group == None :
-=======
-    logme.debug(__name__+':inf')
-    try:
-        group = ur.find("div", "user-actions btn-group not-following ")
-        if group == None:
-            group = ur.find("div", "user-actions btn-group not-following")
-        if group == None:
->>>>>>> master
             group = ur.find("div", "user-actions btn-group not-following protected")
     except Exception as e:
         print("Error: " + str(e))
@@ -42,10 +28,6 @@ def inf(ur, _type):
     return ret
 
 def card(ur, _type):
-<<<<<<< HEAD
-=======
-    logme.debug(__name__+':card')
->>>>>>> master
     if _type == "bio":
         try:
             ret = ur.find("p", "ProfileHeaderCard-bio u-dir").text.replace("\n", " ")
@@ -66,33 +48,20 @@ def card(ur, _type):
     return ret
 
 def join(ur):
-<<<<<<< HEAD
-=======
-    logme.debug(__name__+':join')
->>>>>>> master
     jd = ur.find("span", "ProfileHeaderCard-joinDateText js-tooltip u-dir")["title"]
     return jd.split(" - ")
 
 def convertToInt(x):
-<<<<<<< HEAD
-=======
-    logme.debug(__name__+':contertToInt')
->>>>>>> master
     multDict = {
         "k" : 1000,
         "m" : 1000000,
         "b" : 1000000000,
     }
-<<<<<<< HEAD
     try :
-=======
-    try:
->>>>>>> master
         if ',' in x:
             x = x.replace(',', '')
         y = int(x)
         return y
-<<<<<<< HEAD
     except :
         pass
 
@@ -101,41 +70,20 @@ def convertToInt(x):
         y = y * multDict[str(x)[-1:].lower()]
         return int(y)
     except :
-=======
-    except:
-        pass
-
-    try:
-        y = float(str(x)[:-1])
-        y = y * multDict[str(x)[-1:].lower()]
-        return int(y)
-    except:
->>>>>>> master
         pass
 
     return 0
 
 def stat(ur, _type):
-<<<<<<< HEAD
-=======
-    logme.debug(__name__+':stat')
->>>>>>> master
     _class = f"ProfileNav-item ProfileNav-item--{_type}"
     stat = ur.find("li", _class)
     try :
         r = stat.find("span", "ProfileNav-value")["data-count"]
     except AttributeError:
         r = "0"
-<<<<<<< HEAD
     return r
 
 def media(ur):
-=======
-    return int(r)
-
-def media(ur):
-    logme.debug(__name__+':media')
->>>>>>> master
     try:
       media_count = ur.find("a", "PhotoRail-headingWithCount js-nav").text.strip().split(" ")[0]
       media_count = convertToInt(media_count)
@@ -145,10 +93,6 @@ def media(ur):
     return media_count
 
 def verified(ur):
-<<<<<<< HEAD
-=======
-    logme.debug(__name__+':verified')
->>>>>>> master
     try:
         is_verified = ur.find("span", "ProfileHeaderCard-badges").text
         if "Verified account" in is_verified:
@@ -161,10 +105,6 @@ def verified(ur):
     return is_verified
 
 def User(ur):
-<<<<<<< HEAD
-=======
-    logme.debug(__name__+':User')
->>>>>>> master
     u = user()
     for img in ur.findAll("img", "Emoji Emoji--forText"):
         img.replaceWith(img["alt"])
@@ -185,8 +125,4 @@ def User(ur):
     u.is_verified = verified(ur)
     u.avatar = ur.find("img", "ProfileAvatar-image")["src"]
     u.background_image = ur.find('div',{'class':'ProfileCanopy-headerBg'}).find('img').get('src')
-<<<<<<< HEAD
     return u
-=======
-    return u
->>>>>>> master

@@ -3,27 +3,8 @@ import csv
 import json
 import os
 
-<<<<<<< HEAD
 def Text(entry, f):
     print(entry, file=open(f, "a", encoding="utf-8"))
-=======
-def outputExt(objType, fType):
-    if objType == "str":
-        objType = "username"
-    outExt = f"/{objType}s.{fType}"
-
-    return outExt
-
-def addExt(base, objType, fType):
-    if len(base.split('.')) == 1:
-        createDirIfMissing(base)
-        base += outputExt(objType, fType)
-
-    return base
-
-def Text(entry, f):
-    print(entry.replace('\n', ' '), file=open(f, "a", encoding="utf-8"))
->>>>>>> master
 
 def Type(config):
     if config.User_full:
@@ -53,7 +34,6 @@ def createDirIfMissing(dirname):
 
 def Csv(obj, config):
     _obj_type = obj.__class__.__name__
-<<<<<<< HEAD
     if _obj_type == "str": _obj_type = "username"
     Output_csv = {"tweet": config.Output.split(".")[0] + "/tweets.csv",
                   "user": config.Output.split(".")[0] + "/users.csv",
@@ -69,26 +49,11 @@ def Csv(obj, config):
             writer.writeheader()
 
     with open(Output_csv[_obj_type], "a", newline='', encoding="utf-8") as csv_file:
-=======
-    if _obj_type == "str":
-        _obj_type = "username"
-    fieldnames, row = struct(obj, config.Custom[_obj_type], _obj_type)
-    
-    base = addExt(config.Output, _obj_type, "csv")
-    
-    if not (os.path.exists(base)):
-        with open(base, "w", newline='', encoding="utf-8") as csv_file:
-            writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-            writer.writeheader()
-
-    with open(base, "a", newline='', encoding="utf-8") as csv_file:
->>>>>>> master
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         writer.writerow(row)
 
 def Json(obj, config):
     _obj_type = obj.__class__.__name__
-<<<<<<< HEAD
     if _obj_type == "str": _obj_type = "username"
     Output_json = {"tweet": config.Output.split(".")[0] + "/tweets.json",
                   "user": config.Output.split(".")[0] + "/users.json",
@@ -99,14 +64,5 @@ def Json(obj, config):
     createDirIfMissing(config.Output.split(".")[0])
 
     with open(Output_json[_obj_type], "a", newline='', encoding="utf-8") as json_file:
-=======
-    if _obj_type == "str":
-        _obj_type = "username"
-    null, data = struct(obj, config.Custom[_obj_type], _obj_type)
-
-    base = addExt(config.Output, _obj_type, "json")
-
-    with open(base, "a", newline='', encoding="utf-8") as json_file:
->>>>>>> master
         json.dump(data, json_file, ensure_ascii=False)
         json_file.write("\n")

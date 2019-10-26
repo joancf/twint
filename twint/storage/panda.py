@@ -50,23 +50,10 @@ def _autoget(type):
 def update(object, config):
     global _type
 
-<<<<<<< HEAD
     try:
         _type = ((object.type == "tweet")*"tweet" +
                  (object.type == "user")*"user")
     except AttributeError:
-=======
-    #try:
-    #    _type = ((object.__class__.__name__ == "tweet")*"tweet" +
-    #             (object.__class__.__name__ == "user")*"user")
-    #except AttributeError:
-    #    _type = config.Following*"following" + config.Followers*"followers"
-    if object.__class__.__name__ == "tweet":
-        _type = "tweet"
-    elif object.__class__.__name__ == "user":
-        _type = "user"
-    elif object.__class__.__name__ == "dict":
->>>>>>> master
         _type = config.Following*"following" + config.Followers*"followers"
 
     if _type == "tweet":
@@ -80,23 +67,14 @@ def update(object, config):
             "date": dt,
             "timezone": Tweet.timezone,
             "place": Tweet.place,
-<<<<<<< HEAD
             "location": Tweet.location,
             "tweet": Tweet.tweet,
             "hashtags": Tweet.hashtags,
-=======
-            "tweet": Tweet.tweet,
-            "hashtags": Tweet.hashtags,
-            "cashtags": Tweet.cashtags,
->>>>>>> master
             "user_id": Tweet.user_id,
             "user_id_str": Tweet.user_id_str,
             "username": Tweet.username,
             "name": Tweet.name,
-<<<<<<< HEAD
             "profile_image_url": Tweet.profile_image_url,
-=======
->>>>>>> master
             "day": day,
             "hour": hour(Tweet.datetime),
             "link": Tweet.link,
@@ -106,18 +84,7 @@ def update(object, config):
             "nretweets": int(Tweet.retweets_count),
             "quote_url": Tweet.quote_url,
             "search": str(config.Search),
-<<<<<<< HEAD
             "near": config.Near
-=======
-            "near": Tweet.near,
-            "geo": Tweet.geo,
-            "source": Tweet.source,
-            "user_rt_id": Tweet.user_rt_id,
-            "user_rt": Tweet.user_rt,
-            "retweet_id": Tweet.retweet_id,
-            "reply_to": Tweet.reply_to,
-            "retweet_date": Tweet.retweet_date
->>>>>>> master
             }
         _object_blocks[_type].append(_data)
     elif _type == "user":
@@ -127,19 +94,12 @@ def update(object, config):
             "name": user.name,
             "username": user.username,
             "bio": user.bio,
-<<<<<<< HEAD
             "location": user.location,
-=======
->>>>>>> master
             "url": user.url,
             "join_datetime": user.join_date + " " + user.join_time,
             "join_date": user.join_date,
             "join_time": user.join_time,
             "tweets": user.tweets,
-<<<<<<< HEAD
-=======
-            "location": user.location,
->>>>>>> master
             "following": user.following,
             "followers": user.followers,
             "likes": user.likes,
@@ -161,22 +121,10 @@ def update(object, config):
 
 
 def clean():
-<<<<<<< HEAD
-=======
-    global Tweets_df
-    global Follow_df
-    global User_df
->>>>>>> master
     _object_blocks["tweet"].clear()
     _object_blocks["following"].clear()
     _object_blocks["followers"].clear()
     _object_blocks["user"].clear()
-<<<<<<< HEAD
-=======
-    Tweets_df = None
-    Follow_df = None
-    User_df = None
->>>>>>> master
 
 def save(_filename, _dataframe, **options):
     if options.get("dataname"):

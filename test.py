@@ -16,8 +16,7 @@ def test_db(c, run):
 
 def custom(c, run, _type):
     print("[+] Beginning custom {} test in {}".format(_type, str(run)))
-    c.Custom['tweet'] = ["id", "username"]
-    c.Custom['user'] = ["id", "username"]
+    c.Custom = ["id", "username"]
     run(c)
 
 def test_json(c, run):
@@ -65,7 +64,7 @@ def main():
 
     for run in runs[2:]:
         if run == twint.run.Search:
-            c.Since = "2012-1-1 20:30:22"
+            c.Since = "2012-1-1"
             c.Until = "2017-1-1"
         else:
             c.Since = ""
