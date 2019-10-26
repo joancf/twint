@@ -12,12 +12,17 @@ class Config:
     Year = None
     Since = None
     Until = None
-    Fruit = False
+    Email = False
+    Phone = False
+
     Verified = False
     Store_csv = False
     Store_json = False
     Custom = {"tweet": None, "user": None, "username": None}
     Show_hashtags = False
+
+    Show_cashtags = False
+
     Limit = None
     Count = None
     Stats = False
@@ -35,12 +40,17 @@ class Config:
     User_full = False
     Profile_full = False
     Store_object = False
+
     Store_pandas = False
+
+    Store_object_tweets_list = None
+
     Pandas_type = None
     Pandas = False
     Index_tweets = "twinttweets"
     Index_follow = "twintgraph"
     Index_users = "twintuser"
+
     Index_type = "items"
     Debug = False
     Retries_count = 10
@@ -60,5 +70,20 @@ class Config:
     Retweets = False
     Query = None
     Hide_output = False
+
     Get_replies = False
     Near = ""
+
+    Near = ""
+    Custom_query = ""
+    Popular_tweets = False
+    Skip_certs = False
+    Native_retweets = False
+    Min_likes = 0
+    Min_retweets = 0
+    Min_replies = 0
+    Links = None
+    Source = None
+    Members_list = None
+    Filter_retweets = False
+
