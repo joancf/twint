@@ -1,0 +1,162 @@
+replace() argument 2 must be str, not None [x] get.User
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+number of followers: 321
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+1 adam33004035 25
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+2 n1l23 118
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+3 arniilla24 177
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+4 aneetaa_10 73
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+5 carmecruells 22
+6 lespurnabloc 601
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+7 albaguty1 305
+8 omniumvoriental 601
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+9 passavets 78
+10 msko21 601
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+11 latributfm 134
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+12 jasomaqui_cat 314
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+13 saliumb 145
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+14 bikekingsmaresm 47
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+15 marie_mm3 259
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+16 eric5sala 208
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+17 annasaula 431
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+18 georgina160187 23
+19 frasesmarketing 601
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+20 angelagrau3 57
+21 mksjosoccdr 601
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+22 laiahierro 337
+23 jordicuminal 601
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+24 cristimainou 136
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+25 f_robertapia 394
+26 dmtrends 601
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+27 tanacle 35
+28 byakkosbliss 601
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+29 elbocamollcat 429
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+30 pixelizate 547
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+31 andreaambatlle 103
+32 cristin19821 601
+33 ddepaz3 601
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+34 laiafontmajo 90
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+35 alexprietosanz 142
+36 carlesunico 601
+37 bagergue_aran 601
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+38 la_vila_digital 551
+39 mipatanfavorito 601
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+40 ana_alarcia 185
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+41 vuelooferta 26
+42 hip0tep 601
+43 luisadvei 601
+list index out of range [x] feed.Follow
+44 annabusquets10 1
+45 authorjsmorin 601
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+46 aquanuova 30
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+47 merceserra_ 86
+48 carlososorio81 601
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+49 leorafanoe 93
+50 npedrojulia 601
+51 wakeupincomes 601
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+52 tecnocampusmicd 454
+53 tequilagarage 601
+54 generacionmk 601
+55 polcorominas 601
+56 theacademymat 601
+57 mzof_tar 601
+58 blogymarketing 601
+59 miguelfloro 601
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+60 costineltg 300
+61 pincheseductor 601
+62 marketingandweb 601
+63 joelcuello25 601
+64 marketing3015 601
+65 maresmontseny 601
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+66 stercasanovas 150
+list index out of range [x] feed.Follow
+list index out of range [x] feed.Follow
+67 lleget 180
+68 igeeni 601
+'NoneType' object is not subscriptable [x] get.User
+Traceback (most recent call last):
+  File "prova.py", line 63, in <module>
+    userMap[user]=get_user(user)
+  File "prova.py", line 24, in get_user
+    twint.run.Following(c)
+  File "/home/joan/Desktop/SNA/soft/python/twint/twint/run.py", line 192, in Following
+    run(config)
+  File "/home/joan/Desktop/SNA/soft/python/twint/twint/run.py", line 167, in run
+    get_event_loop().run_until_complete(Twint(config).main())
+  File "/usr/lib/python3.6/asyncio/base_events.py", line 473, in run_until_complete
+    return future.result()
+  File "/home/joan/Desktop/SNA/soft/python/twint/twint/run.py", line 127, in main
+    self.config.User_id = await get.User(url, self.config, self.conn, True)
+  File "/home/joan/Desktop/SNA/soft/python/twint/twint/get.py", line 144, in User
+    return int(inf(soup, "id"))
+  File "/home/joan/Desktop/SNA/soft/python/twint/twint/user.py", line 16, in inf
+    ret = group["data-user-id"]
+TypeError: 'NoneType' object is not subscriptable

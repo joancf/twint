@@ -13,8 +13,8 @@ import twint
 import sys
 import os
 limit=600
-userLimit=5000
-center="cacaolat"
+userLimit=300
+center= sys.argv[1] 
 def get_user(user):
     c = twint.Config()
     c.Username = user

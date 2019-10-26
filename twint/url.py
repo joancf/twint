@@ -1,7 +1,11 @@
+#from datetime import datetime
+#import logging
+
 mobile = "https://mobile.twitter.com"
 base = "https://twitter.com/i"
 
 async def Favorites(username, init):
+    #logging.info("[<] " + str(datetime.now()) + ':: url+Favorites')
     url = f"{mobile}/{username}/favorites?lang=en"
 
     if init != -1:
@@ -10,6 +14,7 @@ async def Favorites(username, init):
     return url
 
 async def Followers(username, init):
+    #logging.info("[<] " + str(datetime.now()) + ':: url+Followers')
     url = f"{mobile}/{username}/followers?lang=en"
 
     if init != -1:
@@ -18,6 +23,7 @@ async def Followers(username, init):
     return url
 
 async def Following(username, init):
+    #logging.info("[<] " + str(datetime.now()) + ':: url+Following')
     url = f"{mobile}/{username}/following?lang=en"
 
     if init != -1:
@@ -26,6 +32,7 @@ async def Following(username, init):
     return url
 
 async def MobileProfile(username, init):
+    #logging.info("[<] " + str(datetime.now()) + ':: url+MobileProfile')
     url = f"{mobile}/{username}?lang=en"
 
     if init != -1:
@@ -34,6 +41,7 @@ async def MobileProfile(username, init):
     return url
 
 async def Profile(username, init):
+    #logging.info("[<] " + str(datetime.now()) + ':: url+Profile')
     url = f"{base}/profiles/show/{username}/timeline/tweets?include_"
     url += "available_features=1&lang=en&include_entities=1"
     url += "&include_new_items_bar=true"
@@ -44,49 +52,57 @@ async def Profile(username, init):
     return url
 
 async def Search(config, init):
-    url = f"{base}/search/timeline?f=tweets&vertical=default&lang=en"
-    url += "&include_available_features=1&include_entities=1&"
-    url += f"reset_error_state=false&src=typd&qf=off&max_position={init}&q="
-
+    #logging.info("[<] " + str(datetime.now()) + ':: url+Search')
+    url = f"{base}/search/timeline"
+    params = [
+        ('f', 'tweets'),
+        ('vertical', 'default'),
+        ('src', 'unkn'),
+        ('include_available_features', '1'),
+        ('include_entities', '1'),
+        ('max_position', str(init)),
+        ('reset_error_state', 'false'),
+    ]
+    q = ""
     if config.Lang:
-        url = url.replace("lang=en", f"l={config.Lang}&lang=en")
+        params.append(("l", config.Lang))
+        params.append(("lang", "en"))
+    if config.Query:
+        q += f" from:{config.Query}"
     if config.Username:
-        url += f"from%3A{config.Username}"
+        q += f" from:{config.Username}"
     if config.Geo:
         config.Geo = config.Geo.replace(" ", "")
-        url += f"geocode%3A{config.Geo}"
+        q += f" geocode:{config.Geo}"
     if config.Search:
-        config.Search = config.Search.replace(" ", "%20")
-        config.Search = config.Search.replace("#", "%23")
-        url += f"%20{config.Search}"
+        q += f" {config.Search}"
     if config.Year:
-        url += f"%20until%3A{config.Year}-1-1"
+        q += f" until:{config.Year}-1-1"
     if config.Since:
-        url += f"%20since%3A{config.Since}"
+        q += f" since:{config.Since}"
     if config.Until:
-        url += f"%20until%3A{config.Until}"
+        q += f" until:{config.Until}"
     if config.Fruit:
-        url += "%20%22myspace.com%22%20OR%20%22last.fm%22%20OR"
-        url += "%20%22mail%22%20OR%20%22email%22%20OR%20%22gmail%22%20OR%20%22e-mail%22"
-        url += "%20OR%20%22phone%22%20OR%20%22call%20me%22%20OR%20%22text%20me%22"
-        url += "%20OR%20%22keybase%22"
+        url += ' "myspace.com" OR "last.fm" OR'
+        url += ' "mail" OR "email" OR "gmail" OR "e-mail"'
+        # url += "%20OR%20%22phone%22%20OR%20%22call%20me%22%20OR%20%22text%20me%22"
+        # url += "%20OR%20%22keybase%22"
     if config.Verified:
-        url += "%20filter%3Averified"
+        q += " filter:verified"
     if config.To:
-        url += f"%20to%3A{config.To}"
+        q += f" to:{config.To}"
     if config.All:
-        url += f"%20to%3A{config.All}%20OR%20from%3A{config.All}%20OR%20@{config.All}"
+        q += f" to:{config.All} OR from:{config.All} OR @{config.All}"
     if config.Near:
-        config.Near = config.Near.replace(" ", "%20")
-        config.Near = config.Near.replace(",", "%2C")
-        url += f"%20near%3A%22{config.Near}%22"
+        q += f' near:"{config.Near}"'
     if config.Images:
-        url += "%20filter%3Aimages"
+        q += " filter:images"
     if config.Videos:
-        url += "%20filter%3Avideos"
+        q += " filter:videos"
     if config.Media:
-        url += "%20filter%3Amedia"
+        q += " filter:media"
     if config.Replies:
-        url += "%20filter%3Areplies"
+        q += " filter:replies"
 
-    return url
+    params.append(("q", q))
+    return url, params
