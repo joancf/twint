@@ -8,3 +8,6 @@ pandas
 aiohttp_socks
 schedule
 geopy
+async-timeout
+twint
+networkx
